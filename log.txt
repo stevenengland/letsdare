@@ -1,0 +1,5 @@
+TestDisk 7.2-WIP, Data Recovery Utility, March 2023
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+)0[1;26r[m[4l[?7h[39;49m[?25l[?1c[39;49m[37m[40m[m[39;49m[37m[40m[H[JTestDisk 7.2-WIP, Data Recovery Utility, March 2023[2dChristophe GRENIER <grenier@cgsecurity.org>[3dhttps://www.cgsecurity.org[6dPlease wait...[7dDisk disk.img - 5242 KB / 5120 KiB - CHS 1 255 63[8d[39;49m[37m[40m[H[J[39;49m[26d[K[26;1H[?25h[?0cDisk disk.img - 5242 KB / 5120 KiB - CHS 1 255 63
+     Partition			Start        End    Size in sectors

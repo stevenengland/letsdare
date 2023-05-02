@@ -1,0 +1,35 @@
+---
+version: "3.9"
+
+services:
+  app:
+    image: letsdare:dev
+    build:
+      target: development_build
+      context: .
+      dockerfile: ./docker/Dockerfile
+      args:
+        DJANGO_ENV: development
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/letsdare/app
+      - ./tests:/letsdare/tests
+      - ./requirements:/letsdare/requirements
+      - ./config:/letsdare/config
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    healthcheck:
+      # We use `$$` here because:
+      # one `$` goes to shell,
+      # one `$` goes to `docker-compose.yml` escaping
+      test: |
+        /usr/bin/test $$(
+          /usr/bin/curl --fail http://localhost:8000/health/?format=json
+          --write-out "%{http_code}" --silent --output /dev/null
+        ) -eq 200
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
