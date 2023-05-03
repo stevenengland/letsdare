@@ -1,1 +1,17 @@
 -c constraints.txt
+appdirs
+dependency-injector
+django
+django-axes
+django-csp
+django-health-check
+django_http_referrer_policy
+django_permissions_policy
+django-split-settings
+django-stubs
+djangorestframework-stubs[compatible-mypy]
+filetype
+python-decouple
+psycopg2-binary
+structlog
+types-mock
