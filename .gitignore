@@ -253,3 +253,4 @@ artifacts/
 
 # ipython:
 .ipython/
+tools/ansible_runbook/.playbook_overrides.yml
