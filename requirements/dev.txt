@@ -1,0 +1,22 @@
+-r ./base.txt
+ansible
+black
+django_coverage_plugin
+django-debug-toolbar
+django-extra-checks
+django_migration_linter
+django-querycount
+django_test_migrations
+mypy
+nplusone
+pyfakefs
+pytest
+pytest-cov
+pytest-env
+pytest-django
+pytest-mock
+pytest-mockito
+pytest-timeout
+time-machine
+wemake-python-styleguide
+yamllint
