@@ -7,4 +7,5 @@ class Container(containers.DeclarativeContainer):
     config = providers.Configuration()
     logging_service = providers.Factory(LoggingService)
 
+
 container = Container()
