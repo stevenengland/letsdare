@@ -94,5 +94,8 @@ jobs:
           path: .github/workflows/env_vars.txt
           log-variables: true
 
+      - name: Create test images
+        run: ./tools/create_test_images.sh
+
       - name: Run tests
         run: make docker_test
