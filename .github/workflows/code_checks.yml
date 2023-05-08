@@ -95,7 +95,18 @@ jobs:
           log-variables: true
 
       - name: Create test images
-        run: ./tools/create_test_images.sh
+        uses: nick-fields/retry@v2
+        with:
+          command: |
+            chmod +x ./tools/create_test_images.sh
+            ./tools/create_test_images.sh
+
+      - name: Configure base system
+        uses: nick-fields/retry@v2
+        with:
+          command: |
+            chmod +x ./tools/run_ansible_provisioning.sh
+            ./tools/run_ansible_provisioning.sh
 
       - name: Run tests
         run: make docker_test
