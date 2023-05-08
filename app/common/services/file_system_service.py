@@ -1,7 +1,7 @@
 import os
+import pathlib
 import shutil
 import tempfile
-from pathlib import Path
 from typing import Optional
 
 from app.common import hashers
@@ -60,7 +60,10 @@ class FileSystemService(FileSystemServiceInterface):  # noqa: WPS214
         shutil.rmtree(dir_path)
 
     def get_file_content(self, file_path: str) -> str:
-        return Path(file_path).read_text()
+        return pathlib.Path(file_path).read_text()
+
+    def file_exists(self, file_path: str) -> bool:
+        return pathlib.Path(file_path).is_file()
 
     def _get_files_in_dir_recursive(
         self,

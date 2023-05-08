@@ -73,3 +73,25 @@ def test_get_file_content_should_return_text(
     )
 
     assert file_text == "1234test\n"
+
+
+def test_file_exists_should_return_true_if_file_exists(
+    fss: file_system_service.FileSystemService,
+    test_assets_fs: FakeFileSystemHelper,
+):
+    is_file_and_exists = fss.file_exists(
+        str(test_assets_fs.test_assets_path.joinpath("get_files_in_dir", "test1.txt")),
+    )
+
+    assert is_file_and_exists
+
+
+def test_file_exists_should_return_false_if_file_does_not_exist(
+    fss: file_system_service.FileSystemService,
+    test_assets_fs: FakeFileSystemHelper,
+):
+    is_file_and_exists = fss.file_exists(
+        str(test_assets_fs.test_assets_path.joinpath("get_files_in_dir", "test99.txt")),
+    )
+
+    assert not is_file_and_exists

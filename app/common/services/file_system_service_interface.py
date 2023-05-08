@@ -26,3 +26,7 @@ class FileSystemServiceInterface(abc.ABC):
     @abc.abstractmethod
     def get_file_content(self, file_path: str) -> str:
         pass
+
+    @abc.abstractmethod
+    def file_exists(self, file_path: str) -> bool:
+        pass
