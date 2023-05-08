@@ -97,6 +97,9 @@ jobs:
       - name: Create test images
         uses: nick-fields/retry@v2
         with:
+          timeout_minutes: 5
+          retry_wait_seconds: 20
+          max_attempts: 2
           command: |
             chmod +x ./tools/create_test_images.sh
             ./tools/create_test_images.sh
@@ -104,6 +107,9 @@ jobs:
       - name: Configure base system
         uses: nick-fields/retry@v2
         with:
+          timeout_minutes: 10
+          retry_wait_seconds: 20
+          max_attempts: 2
           command: |
             chmod +x ./tools/run_ansible_provisioning.sh
             ./tools/run_ansible_provisioning.sh
