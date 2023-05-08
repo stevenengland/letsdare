@@ -3,7 +3,7 @@
 BASEDIR="$(readlink -f $0 | xargs dirname)/.."
 ASK_BECOME_PASS=""
 
-if [ "$(id -u)" != "0" ]; then
+if [ "$EUID" -ne 0 ]; then
    ASK_BECOME_PASS="--ask-become-pass"
 fi
 

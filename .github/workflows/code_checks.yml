@@ -81,6 +81,11 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v3
 
+      - name: Show current user info
+        run: |
+          echo "ID:   $EUID"
+          echo "Name: `whoami`"
+
       - name: Build the docker image
         uses: ./.github/actions/docker_build_dev
         with:
