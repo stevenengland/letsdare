@@ -1,6 +1,7 @@
 import os
 import shutil
 import tempfile
+from pathlib import Path
 from typing import Optional
 
 from app.common import hashers
@@ -57,6 +58,9 @@ class FileSystemService(FileSystemServiceInterface):  # noqa: WPS214
 
     def delete_dir(self, dir_path) -> None:
         shutil.rmtree(dir_path)
+
+    def get_file_content(self, file_path: str) -> str:
+        return Path(file_path).read_text()
 
     def _get_files_in_dir_recursive(
         self,

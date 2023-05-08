@@ -22,3 +22,7 @@ class FileSystemServiceInterface(abc.ABC):
     @abc.abstractmethod
     def delete_dir(self, dir_path) -> None:
         pass
+
+    @abc.abstractmethod
+    def get_file_content(self, file_path: str) -> str:
+        pass

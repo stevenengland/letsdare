@@ -62,3 +62,14 @@ def test_delete_dir_should_delete_dir_when_dir_is_not_empty(
 
     fss.delete_dir(dir2delete)
     assert not os.path.exists(dir2delete)
+
+
+def test_get_file_content_should_return_text(
+    fss: file_system_service.FileSystemService,
+    test_assets_fs: FakeFileSystemHelper,
+):
+    file_text = fss.get_file_content(
+        str(test_assets_fs.test_assets_path.joinpath("get_files_in_dir", "test1.txt")),
+    )
+
+    assert file_text == "1234test\n"
