@@ -118,6 +118,8 @@ jobs:
           command: |
             chmod +x ./tools/run_ansible_provisioning.sh
             ./tools/run_ansible_provisioning.sh
+        env:
+          PW_LESS_SUDO: true
 
       - name: Run tests
         run: make docker_test
