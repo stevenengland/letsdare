@@ -26,6 +26,7 @@ pyclean:
   || true
 
 docker_build:
+	@echo "*********** DOCKER: Build image"
 	@docker-compose -f docker-compose-dev.yml build
 
 docker_lint:

@@ -99,27 +99,5 @@ jobs:
           path: .github/workflows/env_vars.txt
           log-variables: true
 
-      - name: Create test images
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 5
-          retry_wait_seconds: 20
-          max_attempts: 2
-          command: |
-            chmod +x ./tools/create_test_images.sh
-            ./tools/create_test_images.sh
-
-      - name: Configure base system
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 10
-          retry_wait_seconds: 20
-          max_attempts: 2
-          command: |
-            chmod +x ./tools/run_ansible_provisioning.sh
-            ./tools/run_ansible_provisioning.sh
-        env:
-          PW_LESS_SUDO: true
-
       - name: Run tests
         run: make docker_test
