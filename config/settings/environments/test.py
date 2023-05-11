@@ -198,3 +198,5 @@ LOGGING = {
         },
     },
 }
+
+TOOLS_PARTED_BINARY = "/opt/letsdare/parted/parted/parted"
