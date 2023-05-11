@@ -37,3 +37,8 @@ TOOLS_TESTDISK_BINARY: str = config(
     "LETSDARE_TOOLS_TESTDISK_BINARY",
     default="testdisk",
 )
+
+TOOLS_WORKING_DIR: str = config(
+    "LETSDARE_TOOLS_TOOLS_WORKING_DIR",
+    default=None,
+)

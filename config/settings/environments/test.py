@@ -200,3 +200,4 @@ LOGGING = {
 }
 
 TOOLS_PARTED_BINARY = "/opt/letsdare/parted/parted/parted"
+TOOLS_TESTDISK_BINARY = "/opt/letsdare/testdisk/testdisk_static"
