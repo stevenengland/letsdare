@@ -31,6 +31,8 @@ class PartedPartitionDetectionService(PartitionDetectionServiceInterface):
             self.shell_service.stdout if self.shell_service.stdout is not None else ""
         )
 
+        print(self.shell_service.stdout)  # noqa: WPS421
+
         regex = "Partition Table: (.*)$"
         match = re.search(regex, parted_result, re.MULTILINE)
 

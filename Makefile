@@ -17,7 +17,7 @@ lint:
 	@mypy . || true
 
 test:
-	@pytest
+	@pytest -rP
 
 pyclean:
 	@find . \
@@ -42,4 +42,4 @@ docker_lint:
 	 '
 
 docker_test:
-	@docker-compose -f docker-compose-dev.yml run --rm app sh -c "pytest"
+	@docker-compose -f docker-compose-dev.yml run --rm app sh -c "pytest -rP"

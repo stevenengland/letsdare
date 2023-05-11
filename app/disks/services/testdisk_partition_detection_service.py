@@ -47,6 +47,9 @@ class TestDiskPartitionDetectionService(PartitionDetectionServiceInterface):
         regex = r"Partition table type \(auto\): (.*)$"
         match = re.search(regex, testdisk_log_text, re.MULTILINE)
 
+        print(self.shell_service.stdout)  # noqa: WPS421
+        print(testdisk_log_text)  # noqa: WPS421
+
         if match:
             return match.group(1)
 
