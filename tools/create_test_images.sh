@@ -120,11 +120,64 @@ detach_deleted_devices
 # IMAGE CREATION SECTION
 ###############
 
-# Unreadable image
+# Image with corrupted MBR (completely missing)
+#IMAGE="uc0005"
+#LOOP_DEVICE=$(get_next_avail_loop_dev)
+#setup_block_device $IMAGE 5 $LOOP_DEVICE
+#
+#echo "> Partitioning loop device $LOOP_DEVICE"
+#parted --script $LOOP_DEVICE \
+#  mktable msdos \
+#  mkpart primary 1MiB 2MiB \
+#  mkpart primary 2MiB 100% \
+#  align-check optimal 1 \
+#  align-check optimal 2 \
+#  name 1 UEFI \
+#  name 2 SYSTEM
+#
+#dd if=/dev/zero of=$LOOP_DEVICE bs=512 count=1 conv=notrunc
+
+# Image with corrupted GPT (completely missing)
+# https://serverfault.com/a/787210
+IMAGE="uc0004"
+LOOP_DEVICE=$(get_next_avail_loop_dev)
+setup_block_device $IMAGE 5 $LOOP_DEVICE
+
+echo "> Partitioning loop device $LOOP_DEVICE"
+parted --script $LOOP_DEVICE \
+  mktable gpt \
+  mkpart primary 1MiB 2MiB \
+  mkpart primary 2MiB 100% \
+  align-check optimal 1 \
+  align-check optimal 2 \
+  name 1 MSDOS \
+  name 2 SYSTEM
+
+dd if=/dev/zero of=$LOOP_DEVICE bs=512 count=34 conv=notrunc
+
+# Image with corrupted GPT (partly missing)
+IMAGE="uc0003"
+LOOP_DEVICE=$(get_next_avail_loop_dev)
+setup_block_device $IMAGE 5 $LOOP_DEVICE
+
+echo "> Partitioning loop device $LOOP_DEVICE"
+parted --script $LOOP_DEVICE \
+  mktable gpt \
+  mkpart primary 1MiB 2MiB \
+  mkpart primary 2MiB 100% \
+  align-check optimal 1 \
+  align-check optimal 2 \
+  name 1 UEFI \
+  name 2 SYSTEM
+
+dd if=/dev/zero of=$LOOP_DEVICE bs=512 count=1 conv=notrunc
+
+# Image with unreadable sectors
 IMAGE="uc0002"
 LOOP_DEVICE=$(get_next_avail_loop_dev)
 setup_block_device $IMAGE 5 $LOOP_DEVICE
 
+echo "> Mapping device to $LOOP_DEVICE"
 dmsetup create $IMAGE << EOF
   0 8       linear $LOOP_DEVICE 0
   8 1       error
@@ -136,7 +189,7 @@ IMAGE="uc0001"
 LOOP_DEVICE=$(get_next_avail_loop_dev)
 setup_block_device $IMAGE 5 $LOOP_DEVICE
 
-echo "Partitioning loop device $LOOP_DEVICE"
+echo "> Partitioning loop device $LOOP_DEVICE"
 parted --script $LOOP_DEVICE \
   mktable gpt \
   mkpart primary 1MiB 2MiB \
