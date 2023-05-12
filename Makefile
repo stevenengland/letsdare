@@ -17,7 +17,7 @@ lint:
 	@mypy . || true
 
 test:
-	@pytest
+	@sudo .venv/bin/python3 -m pytest -rP
 
 pyclean:
 	@find . \
@@ -26,7 +26,10 @@ pyclean:
   || true
 
 docker_build:
+	@echo "*********** DOCKER: Build image"
 	@docker-compose -f docker-compose-dev.yml build
+	@echo "*********** Creating test images"
+	@docker-compose -f docker-compose-dev.yml run --rm -u root app bash -c "/letsdare/tools/create_test_images.sh"
 
 docker_lint:
 	@docker-compose -f docker-compose-dev.yml run --rm app sh -c '\
@@ -41,4 +44,4 @@ docker_lint:
 	 '
 
 docker_test:
-	@docker-compose -f docker-compose-dev.yml run --rm app sh -c "pytest"
+	@docker-compose -f docker-compose-dev.yml run --rm -u root app bash -c "pytest -rP"

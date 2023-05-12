@@ -1,4 +1,8 @@
+# letsdare
 letsdare.conf
+tools/ansible_runbook/.playbook_overrides.yml
+tests/test_assets/disk_images/*
+
 
 #### joe made this: https://goel.io/joe
 
@@ -253,4 +257,3 @@ artifacts/
 
 # ipython:
 .ipython/
-tools/ansible_runbook/.playbook_overrides.yml

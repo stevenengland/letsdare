@@ -110,3 +110,16 @@ COPY [ \
   "docker-compose*", \
   "./" \
 ]
+
+USER root
+
+RUN \
+  apt-get update && apt-get upgrade -y && \
+  apt-get install --no-install-recommends -y \
+    git
+
+RUN chmod +x './tools/run_ansible_provisioning.sh' \
+  && ./tools/run_ansible_provisioning.sh
+
+# Running as non-root user:
+USER letsdare

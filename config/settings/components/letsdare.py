@@ -22,3 +22,23 @@ TMP_ROOTDIR: str = config(
     "LETSDARE_TMP_ROOTDIR",
     default=None,
 )
+
+TOOLS_DDRESCUE_BINARY: str = config(
+    "LETSDARE_TOOLS_DDRESCUE_BINARY",
+    default="ddrescue",
+)
+
+TOOLS_PARTED_BINARY: str = config(
+    "LETSDARE_TOOLS_PARTED_BINARY",
+    default="parted",
+)
+
+TOOLS_TESTDISK_BINARY: str = config(
+    "LETSDARE_TOOLS_TESTDISK_BINARY",
+    default="testdisk",
+)
+
+TOOLS_WORKING_DIR: str = config(
+    "LETSDARE_TOOLS_TOOLS_WORKING_DIR",
+    default=None,
+)

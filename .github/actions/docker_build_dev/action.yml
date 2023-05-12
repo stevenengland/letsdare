@@ -25,4 +25,4 @@ runs:
         retry_wait_seconds: 20
         max_attempts: 3
         command: |
-          docker-compose -f docker-compose-dev.yml build
+          make docker_build
