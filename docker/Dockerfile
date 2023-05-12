@@ -123,7 +123,3 @@ RUN chmod +x './tools/run_ansible_provisioning.sh' \
 
 # Running as non-root user:
 USER letsdare
-
-# Prepare test environment
-RUN chmod +x './tools/create_test_images.sh' \
-  && ./tools/create_test_images.sh

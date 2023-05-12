@@ -28,6 +28,8 @@ pyclean:
 docker_build:
 	@echo "*********** DOCKER: Build image"
 	@docker-compose -f docker-compose-dev.yml build
+	@echo "*********** Creating test images"
+	@docker-compose -f docker-compose-dev.yml run --rm -u root app bash -c "/letsdare/tools/create_test_images.sh"
 
 docker_lint:
 	@docker-compose -f docker-compose-dev.yml run --rm app sh -c '\

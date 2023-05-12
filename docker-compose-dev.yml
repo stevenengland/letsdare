@@ -4,6 +4,7 @@ version: "3.9"
 services:
   app:
     image: letsdare:dev
+    privileged: true  # needed for loop devices, dmsetup, ...
     build:
       target: development_build
       context: .
@@ -15,6 +16,7 @@ services:
     volumes:
       - ./app:/letsdare/app
       - ./tests:/letsdare/tests
+      - ./tools:/letsdare/tools
       - ./requirements:/letsdare/requirements
       - ./config:/letsdare/config
     command: >
