@@ -35,4 +35,4 @@ structlog==22.3.0
 time-machine==2.9.0
 types-mock==5.0.0.5
 wemake-python-styleguide==0.17.0
-yamllint==1.30.0
+yamllint==1.32.0
